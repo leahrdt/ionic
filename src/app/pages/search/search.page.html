@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button 
+        defaultHref="/" 
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>search</ion-title>
+  </ion-toolbar>
+  <!-- debounce es cuando tiempo se espera para que se ejecute la funcion una ves que se termine la aplicacion -->
+  <ion-searchbar 
+    placeholder="Filter Pizza" 
+    inputmode="decimal" 
+    type="decimal" 
+    (ionChange)="onSearchChange($event)" 
+    [debounce]="250" 
+    animated
+    showCancelButton="always">
+
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <!-- El pipe filtro es creado por mi, se encuentra en filtro.pipe.ts -->
+  <!-- - filtro es el nombre del pipe 
+  - textoBuscar es la variable del ts la cual contiene lo que se desea buscar. Para el pipe, es la 2da variable que le paso..
+  - 'title' es el nombre de la propiedad del objeto que se va a buscar no es obligatorio, es solamente para reutirilizar el filtro
+  Para el pipe es la 3er variable que le paso.. se la paso entre comillas porque no es del ts, directamente le paso el valor hardcodeado desde aca-->
+  <ion-item *ngFor="let album of albumes | filtro:textoBuscar:'title' ">
+    <ion-label>{{album.title}}</ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

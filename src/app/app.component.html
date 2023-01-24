@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<!-- el split pane es para que en modo tableta el menu se muestre a la izq y el contenido a la derecha -->
+<!-- para finalizar la configuracion, hay que poner autoHide="false" en el ion-menu-toggle -->
+  <ion-split-pane when="md" contentId="main">
+ 
+    <ion-menu side="start" menuId="firstMenuMio" contentId="main">
+      <ion-header class="ion-no-border" translucent>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <!-- Opcion 1 para que se cierre el menu al hacer click -->
+          <!-- Con el ion Menu Toggle se puede hacer que el menu se cierre al hacer click en un item -->
+          <!-- el autohide es para que en modo tablet te aarezca a la izq el menu -->
+          <ion-menu-toggle *ngFor="let componente of componentes | async"
+          autoHide="false">
+          
+            <ion-item  [routerLink]="[componente.redirectTo]" detail >
+           <!-- Opcion 2 para que se cierre el menu al hacer click -->
+           <!-- Sacar el ion menu toggle, y descomentar abajo, funciona con el click y lo cierro desde el ts automaticamente -->
+           <!-- Para esta opcion acordarse que el ngFor iria en el ion item -->
+              <!-- <ion-item  [routerLink]="[componente.redirectTo]" (click)="closeMenu()"> -->
+              <ion-icon slot="start" [name]="componente.icon" ></ion-icon>
+              <ion-label>{{componente.name}}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+         
+         </ion-list>
+      </ion-content>
+    </ion-menu>
+  
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
+
+
 </ion-app>

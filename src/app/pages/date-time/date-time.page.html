@@ -1,0 +1,52 @@
+<app-header titulo="DateTime"></app-header>
+
+
+<ion-content>
+  
+<ion-list>
+  <ion-list-header>
+    <ion-label>Datos de Nacimiento</ion-label>
+  </ion-list-header>
+
+  <ion-accordion-group>
+
+    <ion-accordion value="start">
+     <ion-item slot="header">
+      <ion-label>Año DateTime</ion-label>
+      <ion-note slot="end" id="datetimeValue"></ion-note>
+     </ion-item>
+     <ion-datetime
+       [value]="fechaNacimiento.toISOString()"
+       (ionChange)="cambioFecha($event)"
+       id="datetime"
+       slot="content"
+       displayFormat="MMMM YY"
+       min="1989-06-04"
+       max="2025-08-23"
+       value="1994-12-15T13:47:20.789"
+     ></ion-datetime>
+    </ion-accordion>
+    <ion-accordion >
+      <ion-item slot="header">
+       <ion-label>Años Ruedita</ion-label>
+       <ion-note slot="end" id="datetimeValue"></ion-note>
+      </ion-item>
+      <ion-datetime 
+      presentation="year"
+      [(ngModel)]="elYearSelected"
+      [yearValues]="customYearValues"
+      [value]="fechaNacimiento.toISOString()"
+      (ionChange)="cambioFecha($event)"
+      slot="content"
+      ></ion-datetime>
+      <ion-button       slot="content"
+       (click)="dameLaFecha()" expand="block" >
+        Click me ngModel
+      </ion-button>
+     </ion-accordion>
+  
+ 
+  </ion-accordion-group>
+
+</ion-list>
+</ion-content>

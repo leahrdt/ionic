@@ -1,0 +1,19 @@
+<app-header titulo="Grid"></app-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of data, let i = index">
+      <ion-label>Item {{i}}</ion-label>
+
+    </ion-item>
+  </ion-list>
+
+  <!-- threshold: que tan cerca hay que llegar abajo para que se dispare el evento -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content 
+    loadingSpinner="bubbles" 
+    loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

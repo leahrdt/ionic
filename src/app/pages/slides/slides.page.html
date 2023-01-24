@@ -1,0 +1,26 @@
+<app-header titulo="Slides"></app-header>
+<!-- ESTOS VAN A DESAPARECER EN IONIC 7, SE RECOMIENDA USAR LA LIBRERIA SLIDES.JS -->
+<ion-content>
+  <ion-slides pager='ios' class="slide-full" >
+    <ion-slide *ngFor="let slide of slides" class="slide-1">
+      <ion-card mode="ios">
+        <img [src]="slide.img" class="slide-image">
+
+        <ion-card-header>
+          <ion-card-subtitle>{{slide.titulo}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{slide.desc}}
+        </ion-card-content>
+        
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-buttons (click)="onClick()" expand="block" fill="clear">
+        Volver
+      </ion-buttons>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

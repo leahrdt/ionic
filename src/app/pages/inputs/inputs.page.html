@@ -1,0 +1,122 @@
+<app-header titulo="card"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    
+<!-- Default Input -->
+<ion-list-header>
+  <ion-label> Default Input</ion-label>
+</ion-list-header>
+<ion-input></ion-input>
+
+<!-- Input with value -->
+<ion-list-header>
+  <ion-label> Normal Input with Value</ion-label>
+</ion-list-header>
+<ion-item>
+  <ion-input 
+type="test" 
+placeholder='Normal' 
+value="custom" 
+[(ngModel)]="nombre"
+></ion-input>
+</ion-item>
+
+<ion-text color="primary">
+  <h1> {{nombre}} </h1>
+</ion-text>
+
+  <!-- Al apretar el ENTER se ejecuta el onSubmit, o, si tengo un boton tipo submit, cuando este se aprete -->
+
+<form #formulariou="ngForm" (ngSubmit)="onSubmit(formulariou)">
+  <!-- Input with placeholder -->
+  <ion-list-header>
+    <ion-label> Formulario valido por Temple Driven: {{formulariou.valid}}</ion-label>
+  </ion-list-header>
+  <ion-item>
+    <ion-label>E-mail</ion-label>
+    <!-- Para que funcione la validacion, se debe agregar el atributo name al input,
+    Asociar un ngModel,
+    Poner un pattern que es un patron de validacion,
+    Y agregar el atributo required -->
+    <ion-input 
+    type='email' 
+    placeholder="Email"
+    name="email"
+    [(ngModel)]="usuario.email"
+    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+    required
+    ></ion-input>
+  </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input 
+      type='password' 
+      placeholder="password"
+      name="password"
+      [(ngModel)]="usuario.password"
+      required
+      ></ion-input>
+    </ion-item>
+    <ion-button [disabled]="formulariou.invalid" expand="block" type="submit">
+      Mandar Form
+    </ion-button>
+</form>
+
+<!-- Input with clear button when there is a value -->
+<ion-list-header>
+  <ion-label> Input with clear button when there is a value</ion-label>
+</ion-list-header>
+<ion-item>
+  <ion-input clearInput value="clear me"></ion-input>
+</ion-item>
+
+<!-- Number type input -->
+<ion-list-header>
+  <ion-label>Number type input </ion-label>
+</ion-list-header>
+<ion-item>
+  <ion-input type="number" value="333"></ion-input>
+</ion-item>
+
+<!-- Disabled input -->
+<ion-list-header>
+  <ion-label> Disabled input </ion-label>
+</ion-list-header>
+<ion-item>
+  <ion-input value="Disabled" disabled></ion-input>
+</ion-item>
+
+<!-- Readonly input -->
+<ion-list-header>
+  <ion-label> Disabled input </ion-label>
+</ion-list-header>
+<ion-item>
+  <ion-input value="Readonly" readonly></ion-input>
+</ion-item>
+
+<!-- Inputs with labels -->
+
+<ion-item>
+  <ion-label>Inputs with labels </ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Floating Label</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="fixed">Fixed Label</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="stacked">Stacked Label</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+</ion-list>
+
+</ion-content>
